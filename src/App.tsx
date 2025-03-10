@@ -1,13 +1,18 @@
-import logo from '/favicon.png';
 import './App.css';
+import Footer from './components/Footer';
+import Header from './components/Header';
 
 function App() {
   return (
-    <>
-      <a href="/">
-        <img src={logo} className="logo" alt="Local Link logo" />
-      </a>
-    </>
+    <div className="app">
+      {/* header */}
+      <Header />
+
+      {/* main */}
+
+      {/* footer */}
+      <Footer />
+    </div>
   );
 }
 
