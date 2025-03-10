@@ -1,0 +1,10 @@
+:root {
+  background-image: linear-gradient(to top left, #041444, #9227f1);
+  height: 100vh;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    background-color: #23b2f7;
+  }
+}
