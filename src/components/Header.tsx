@@ -11,7 +11,7 @@ export default function Header() {
       <Search />
       <ul className="flex-between w-10">
         <li>
-          <a href="#">Sign Up</a>
+          <a href="/signup">Sign Up</a>
         </li>
         <li>Theme</li>
       </ul>
