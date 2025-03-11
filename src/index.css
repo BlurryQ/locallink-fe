@@ -52,20 +52,28 @@ table {
 
 :root {
 
+  --aqua: #23b2f7;
+  --purple: #9227f1;
+  --blue: #041444;
+
+  --flair: var(--aqua);
+
+
   --link-color: #23b2f7;
   --font-color: white;
 
   color: var(--font-color);
-  background-image: linear-gradient(to top left, #041444, #9227f1);
+  background-image: linear-gradient(to top left, var(--blue), var(--purple));
   height: stretch;
 }
 
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: dark) {
   :root {
 
     --link-color: #041444;
+    --flair: var(--purple);
 
-    background-image: linear-gradient(to top left, #23b2f7, #9227f1);
+    background-image: linear-gradient(to top left, var(--aqua), var(--purple));
   }
 }
 
