@@ -1,0 +1,51 @@
+.signup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+.signup input {
+    width: 25%;
+}
+
+@media only screen and (max-width: 1280px) {
+    .signup input {
+        width: 30%;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .signup input {
+        width: 35%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .signup input {
+        width: 40%;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .signup input {
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width: 540px) {
+    .signup input {
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .signup input {
+        width: 70%;
+    }
+}
+
+@media only screen and (max-width: 390px) {
+    .signup input {
+        width: 80%;
+    }
+}
