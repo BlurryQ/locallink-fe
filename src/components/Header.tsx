@@ -13,6 +13,9 @@ export default function Header() {
         <li>
           <a href="/signup">Sign Up</a>
         </li>
+        <li>
+          <a href="/login">Login</a>
+        </li>
         <li>Theme</li>
       </ul>
     </div>
