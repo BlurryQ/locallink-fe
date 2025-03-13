@@ -1,13 +1,28 @@
+import '../styles/event.css';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { EventType } from '../types/EventType';
+
+// apis
 import getEventByID from '../api/getEventByID';
+
+// context
+import { useUser } from '../context/UserContext';
+
+// images
 import logo from '../assets/logo.png';
+
+// types
+import { EventType } from '../types/EventType';
+
+// utils
+import formatEventTime from '../utils/formatEventTime';
+import capitalizeFirstLetterOfEachWord from '../utils/capitaliseFirstLetterOfEachWord';
 
 export default function Event() {
   const { id } = useParams();
   const [event, setEvent] = useState<EventType | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
+  const { user } = useUser();
 
   // TODO create function to get image for eventCard too (run in return)
 
@@ -28,66 +43,54 @@ export default function Event() {
     fetchEvent();
   }, []);
 
+  const handleTicketAddition = async () => {
+    // log in error
+    if (!user.id) return;
+
+    console.log('clicked with userID', user.id);
+    // run payment
+
+    // post ticket
+  };
+
   return (
     <>
       {loading ? 'loading' : null}
       {!loading && event ? (
-        <ul>
+        <ul className="event">
+          <li>Organiser: {event.organiser}</li>
+          {/* <li>Capacity: {event.capacity}</li> */}
           <li>
-            <strong>Image:</strong>{' '}
             <img
               src={event.image_url === 'default' ? logo : event.image_url}
               alt="Event image"
-              style={{ width: '200px' }}
+              className="placeholder"
             />
           </li>
+          <li>{capitalizeFirstLetterOfEachWord(event.name)}</li>
+          <li>Start: {formatEventTime(event.start)}</li>
+          <li>End: {formatEventTime(event.end)}</li>
+          <li>Price: ${(event.price / 100).toFixed(2)}</li>
           <li>
-            <strong>Name:</strong> {event.name}
-          </li>
-          <li>
-            <strong>Start:</strong> {event.start.toLocaleString()}
-          </li>
-          <li>
-            <strong>End:</strong> {event.end.toLocaleString()}
-          </li>
-          <li>
-            <strong>Location:</strong>
-            <ul>
-              <li>
-                <strong>Name:</strong> {event.location.name}
-              </li>
-              <li>
-                <strong>Street:</strong> {event.location.street}
-              </li>
-              <li>
-                <strong>City:</strong> {event.location.city}
-              </li>
-              <li>
-                <strong>Country:</strong> {event.location.country}
-              </li>
-              <li>
-                <strong>Postcode:</strong> {event.location.postcode}
-              </li>
+            <ul className="location">
+              Location:
+              <li>Name: {event.location.name}</li>
+              <li>Street: {event.location.street}</li>
+              <li>City: {event.location.city}</li>
+              <li>Country: {event.location.country}</li>
+              <li>Postcode: {event.location.postcode}</li>
             </ul>
           </li>
-          <li>
-            <strong>Organiser:</strong> {event.organiser}
-          </li>
-          <li>
-            <strong>Capacity:</strong> {event.capacity}
-          </li>
-          <li>
-            <strong>Details:</strong> {event.details}
-          </li>
-          <li>
-            <strong>Status:</strong> {event.status}
-          </li>
-          <li>
-            <strong>Price:</strong> ${event.price.toFixed(2)}
-          </li>
-          <li>
-            <strong>Category:</strong> {event.category}
-          </li>
+          <li>Details: {event.details}</li>
+          {/* <li>Status: {event.status}</li> */}
+          {/* <li>Category: {event.category}</li> */}
+          <button
+            type="button"
+            className="add-ticket"
+            onClick={handleTicketAddition}
+          >
+            Add to Cart
+          </button>
         </ul>
       ) : null}
     </>
