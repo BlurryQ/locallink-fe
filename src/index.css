@@ -67,7 +67,7 @@ table {
   height: stretch;
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   :root {
 
     --link-color: #041444;
@@ -75,11 +75,4 @@ table {
 
     background-image: linear-gradient(to top left, var(--aqua), var(--purple));
   }
-}
-
-/* header, footer */
-.flex-between {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }

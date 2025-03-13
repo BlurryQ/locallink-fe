@@ -1,0 +1,14 @@
+.event {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.event .placeholder {
+    height: 300px
+}
+
+.add-ticket {
+    width: 5rem;
+    align-self: center;
+}

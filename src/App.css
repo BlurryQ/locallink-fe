@@ -4,3 +4,22 @@
   justify-content: space-between;
   height: 100vh;
 }
+
+/* header, footer */
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* eventCard, event */
+.placeholder {
+  opacity: 0.4;
+  border-radius: 1rem;
+  border: 2px solid var(--flair);
+  height: 150px;
+}
+
+.mandatory {
+  color: red;
+}
