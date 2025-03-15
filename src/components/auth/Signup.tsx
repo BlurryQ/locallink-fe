@@ -3,10 +3,11 @@ import '../../styles/auth/signup.css';
 import PasswordChecklist from 'react-password-checklist';
 import { UserType } from '../../types/UserType';
 import postUser from '../../api/postUser';
+import { hashPassword } from '../../utils/Passwords';
 
 export default function Signup() {
   const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
+  let [password, setPassword] = useState<string>('');
   const [passwordConfirm, setPasswordConfirm] = useState<string>('');
   const [passwordValid, setPasswordValid] = useState<boolean>(false);
   // Ex@mpl3!
@@ -16,15 +17,16 @@ export default function Signup() {
       const res = await postUser(user);
       console.log(res);
       // TODO loader while posting and move function
-      // if (res.status) window.location.href = '/events';
+      if (res.status) window.location.href = '/';
     } catch (err) {
       console.error(err);
     }
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     if (!passwordValid || !email) return;
+    password = await hashPassword(password);
     const newUser: UserType = {
       email,
       password,
