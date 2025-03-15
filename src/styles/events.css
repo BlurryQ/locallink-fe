@@ -1,0 +1,5 @@
+.events-list {
+    border: 2px solid var(--font-color);
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+}

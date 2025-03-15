@@ -1,0 +1,22 @@
+.events-card {
+    border: 2px solid var(--font-color);
+    text-align: center;
+}
+
+.events-card a:link,
+.events-card a:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+.events-card img {
+    opacity: 0.4;
+    border-radius: 1rem;
+    border: 2px solid var(--flair);
+    height: 150px;
+}
+
+.location {
+    border-radius: 1rem;
+    border: 2px solid var(--font-color);
+}
