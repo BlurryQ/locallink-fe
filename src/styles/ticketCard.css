@@ -1,0 +1,27 @@
+.ticket-card {
+    color: var(--font-color);
+    text-align: center;
+    border: 2px solid var(--font-color);
+    border-radius: 0.5rem;
+    text-decoration: none;
+    padding: 1rem;
+}
+
+.ticket-card * {
+    padding: 0.2rem;
+}
+
+.ticket-card .location {
+    padding: 1rem;
+    width: 50%;
+    margin: auto;
+}
+
+.ticket-card .title {
+    font-size: 3rem;
+}
+
+.ticket-card .total-tickets {
+    padding: 1rem;
+    font-size: 2rem;
+}
