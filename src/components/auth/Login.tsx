@@ -9,11 +9,9 @@ export default function Login() {
   const [password, setPassword] = useState<string>('');
   const [error, setError] = useState<string>('');
   const userContext = useUser();
-  if (!userContext) {
-    console.error('User context is undefined');
-    return null;
-  }
+  if (!userContext) return;
   const { login } = userContext;
+
   // Ex@mpl3!
 
   const handleSubmit = async (e: any) => {
