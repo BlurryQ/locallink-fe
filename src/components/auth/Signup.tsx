@@ -17,7 +17,7 @@ export default function Signup() {
       const res = await postUser(user);
       console.log(res);
       // TODO loader while posting and move function
-      if (res.status) window.location.href = '/';
+      if (res.status) window.location.href = '/login';
     } catch (err) {
       console.error(err);
     }
