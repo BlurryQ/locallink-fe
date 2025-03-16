@@ -3,10 +3,6 @@
     height: 8vh;
   }
 
-.w-10 {
-    width: 10%;
-}
-
 .header {
     border: solid;
     border-radius: 0.5rem;
@@ -17,4 +13,9 @@
 .header a:link,
 .header a:visited {
     color: var(--link-color);
+}
+
+.header .flex-between {
+    gap: 1rem;
+    text-align: center;
 }

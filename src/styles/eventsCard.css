@@ -1,6 +1,12 @@
 .events-card {
     border: 2px solid var(--font-color);
+    border-radius: 0.5rem;
     text-align: center;
+    padding: 1rem;
+}
+
+.events-card * {
+    padding: 0.2rem;
 }
 
 .events-card a:link,

@@ -1,20 +1,12 @@
+import { LocationType } from "./LocationType"
+
 export type EventType = {
     id: string,
     name: string,
     created_at: Date,
     start: Date,
     end: Date,
-    location: {
-        name: string,
-        street: string,
-        city: string,
-        country: string,
-        postcode: string,
-        coords: {
-            lat: number,
-            long: number
-        }
-    }
+    location: LocationType
     organiser: string,
     capacity: number,
     details: string,
