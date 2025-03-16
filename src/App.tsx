@@ -9,6 +9,7 @@ import Login from './components/auth/Login';
 import Events from './components/Events';
 import Event from './components/Event';
 import { UserProvider } from './context/UserContext';
+import Cart from './components/Cart';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Header />
         <Routes>
           {/* <Route path="/" element={<h1>HOME</h1>} /> */}
+          <Route path="/cart" element={<Cart />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Events />} />
