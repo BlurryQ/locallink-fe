@@ -4,8 +4,9 @@ import logo from '../assets/logo.png';
 import { useUser } from '../context/UserContext';
 
 export default function Header() {
-  const { user, logout } = useUser();
-  console.log(user);
+  const userContext = useUser();
+  if (!userContext) return;
+  const { user, logout } = userContext;
   return (
     <div className="flex-between header">
       <a href="/">

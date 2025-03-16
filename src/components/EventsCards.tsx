@@ -6,6 +6,8 @@ import capitalizeFirstLetterOfEachWord from '../utils/capitaliseFirstLetterOfEac
 
 export default function EventsCard({ event }: { event: EventType }) {
   const image: string = event.image_url === 'default' ? logo : event.image_url;
+  const eventPrice: string =
+    event.price === 0 ? 'Free' : `£${(event.price / 100).toFixed(2)}`;
 
   return (
     <a href={'/events/' + event.id}>
@@ -22,6 +24,7 @@ export default function EventsCard({ event }: { event: EventType }) {
           <li>{event.location.street}</li>
           <li>{event.location.city}</li>
         </ul>
+        <li>{eventPrice}</li>
       </ul>
     </a>
   );

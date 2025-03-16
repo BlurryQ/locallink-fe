@@ -12,6 +12,12 @@
   justify-content: space-between;
 }
 
+/* BuyTickets, Cart */
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
 /* eventCard, event */
 .placeholder {
   opacity: 0.4;

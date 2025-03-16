@@ -1,0 +1,15 @@
+.cart {
+    /* border: 2px solid var(--font-color); */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+}
+
+.cart .date-location {
+    justify-content: space-around;
+    align-items: center;
+}
+
+.cart .title {
+    font-size: 2rem;
+}

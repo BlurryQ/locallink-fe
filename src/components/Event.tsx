@@ -5,9 +5,6 @@ import { useParams } from 'react-router-dom';
 // apis
 import getEventByID from '../api/getEventByID';
 
-// context
-import { useUser } from '../context/UserContext';
-
 // images
 import logo from '../assets/logo.png';
 
@@ -17,12 +14,15 @@ import { EventType } from '../types/EventType';
 // utils
 import formatEventTime from '../utils/formatEventTime';
 import capitalizeFirstLetterOfEachWord from '../utils/capitaliseFirstLetterOfEachWord';
+import BuyTickets from './BuyTickets';
 
 export default function Event() {
   const { id } = useParams();
   const [event, setEvent] = useState<EventType | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
-  const { user } = useUser();
+  // if event exists and is more than 0 format it, else "Free"
+  let totalCost: string =
+    event && event.price > 0 ? (event.price / 100).toFixed(2) : 'Free';
 
   // TODO create function to get image for eventCard too (run in return)
 
@@ -43,16 +43,6 @@ export default function Event() {
     fetchEvent();
   }, []);
 
-  const handleTicketAddition = async () => {
-    // log in error
-    if (!user.id) return;
-
-    console.log('clicked with userID', user.id);
-    // run payment
-
-    // post ticket
-  };
-
   return (
     <>
       {loading ? 'loading' : null}
@@ -64,13 +54,13 @@ export default function Event() {
             <img
               src={event.image_url === 'default' ? logo : event.image_url}
               alt="Event image"
-              className="placeholder"
+              className={event.image_url === 'default' ? 'placeholder' : ''}
             />
           </li>
           <li>{capitalizeFirstLetterOfEachWord(event.name)}</li>
           <li>Start: {formatEventTime(event.start)}</li>
           <li>End: {formatEventTime(event.end)}</li>
-          <li>Price: ${(event.price / 100).toFixed(2)}</li>
+          <li>Ticket Price: {totalCost}</li>
           <li>
             <ul className="location">
               Location:
@@ -84,13 +74,7 @@ export default function Event() {
           <li>Details: {event.details}</li>
           {/* <li>Status: {event.status}</li> */}
           {/* <li>Category: {event.category}</li> */}
-          <button
-            type="button"
-            className="add-ticket"
-            onClick={handleTicketAddition}
-          >
-            Add to Cart
-          </button>
+          <BuyTickets event={event} redirect={'/cart'} />
         </ul>
       ) : null}
     </>

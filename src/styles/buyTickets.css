@@ -1,0 +1,9 @@
+.buy-tickets {
+    align-items: center;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+.buy-tickets input {
+    width: 3rem;
+}
