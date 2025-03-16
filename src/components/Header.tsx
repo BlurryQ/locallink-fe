@@ -13,12 +13,17 @@ export default function Header() {
         <img src={logo} className="logo" alt="Local Link logo" />
       </a>
       <Search />
-      <ul className="flex-between w-10">
+      <ul className="flex-between">
         {user.email ? (
-          <ul>
-            <li>{user.email}</li>
-            <button onClick={logout}>Log Out</button>
-          </ul>
+          <>
+            <li>
+              <a href="/tickets">Tickets</a>
+            </li>
+            <ul>
+              <li>{user.email}</li>
+              <button onClick={logout}>Log Out</button>
+            </ul>
+          </>
         ) : (
           <ul>
             <li>
