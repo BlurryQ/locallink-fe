@@ -10,6 +10,7 @@ import Events from './components/Events';
 import Event from './components/Event';
 import { UserProvider } from './context/UserContext';
 import Cart from './components/Cart';
+import Tickets from './components/Tickets';
 
 function App() {
   return (
@@ -19,10 +20,11 @@ function App() {
         <Routes>
           {/* <Route path="/" element={<h1>HOME</h1>} /> */}
           <Route path="/cart" element={<Cart />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
           <Route path="/" element={<Events />} />
           <Route path="/events/:id" element={<Event />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/tickets" element={<Tickets />} />
           {/* add page not found */}
         </Routes>
 
