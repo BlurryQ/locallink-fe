@@ -57,7 +57,9 @@ export default function Event() {
               className={event.image_url === 'default' ? 'placeholder' : ''}
             />
           </li>
-          <li>{capitalizeFirstLetterOfEachWord(event.name)}</li>
+          <li className="title">
+            {capitalizeFirstLetterOfEachWord(event.name)}
+          </li>
           <li>Start: {formatEventTime(event.start)}</li>
           <li>End: {formatEventTime(event.end)}</li>
           <li>Ticket Price: {totalCost}</li>
