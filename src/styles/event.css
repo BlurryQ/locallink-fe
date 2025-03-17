@@ -8,6 +8,19 @@
     height: 300px
 }
 
+.event * {
+    padding: 0.2rem ;
+}
+
+.event .title {
+    font-size: 3rem;
+}
+
+.event .location {
+    width: clamp(150px, 30%, 250px);
+    justify-self: center;
+}
+
 .add-ticket {
     width: 5rem;
     align-self: center;
