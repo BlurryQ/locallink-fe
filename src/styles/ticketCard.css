@@ -25,3 +25,13 @@
     padding: 1rem;
     font-size: 2rem;
 }
+
+.ticket-card .success {
+    color: limegreen;
+    font-weight: bold;
+}
+
+.ticket-card .failure {
+    color: red;
+    font-weight: bold;
+}
