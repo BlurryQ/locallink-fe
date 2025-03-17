@@ -1,6 +1,12 @@
 import '../styles/eventsCard.css';
-import { EventType } from '../types/EventType';
+
+// images
 import logo from '../assets/logo.png';
+
+// types
+import { EventType } from '../types/EventType';
+
+// utils
 import formatEventTime from '../utils/formatEventTime';
 import capitalizeFirstLetterOfEachWord from '../utils/capitaliseFirstLetterOfEachWord';
 

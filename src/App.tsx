@@ -1,16 +1,18 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 
+// context
+import { UserProvider } from './context/UserContext';
+
 // components
-import Footer from './components/Footer';
 import Header from './components/Header';
-import Signup from './components/auth/Signup';
-import Login from './components/auth/Login';
+import Cart from './components/Cart';
 import Events from './components/Events';
 import Event from './components/Event';
-import { UserProvider } from './context/UserContext';
-import Cart from './components/Cart';
+import Login from './components/auth/Login';
+import Signup from './components/auth/Signup';
 import Tickets from './components/Tickets';
+import Footer from './components/Footer';
 
 function App() {
   return (

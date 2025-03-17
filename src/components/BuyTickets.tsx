@@ -1,9 +1,15 @@
 import '../styles/buyTickets.css';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useUser } from '../context/UserContext';
-import { EventType } from '../types/EventType';
+
+// api
 import postTickets from '../api/postTickets';
+
+// context
+import { useUser } from '../context/UserContext';
+
+// types
+import { EventType } from '../types/EventType';
 
 export default function BuyTickets({
   event,

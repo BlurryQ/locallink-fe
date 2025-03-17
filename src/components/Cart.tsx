@@ -1,5 +1,4 @@
 import '../styles/cart.css';
-
 import { useLocation } from 'react-router-dom';
 
 // images

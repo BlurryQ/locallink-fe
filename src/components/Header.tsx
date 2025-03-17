@@ -1,7 +1,13 @@
 import '../styles/header.css';
+
+// components
 import Search from './Search';
-import logo from '../assets/logo.png';
+
+// context
 import { useUser } from '../context/UserContext';
+
+// image
+import logo from '../assets/logo.png';
 
 export default function Header() {
   const userContext = useUser();
