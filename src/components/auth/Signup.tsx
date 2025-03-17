@@ -1,8 +1,16 @@
-import { useState } from 'react';
 import '../../styles/auth/signup.css';
-import PasswordChecklist from 'react-password-checklist';
-import { UserType } from '../../types/UserType';
+import { useState } from 'react';
+
+// api
 import postUser from '../../api/postUser';
+
+// package
+import PasswordChecklist from 'react-password-checklist';
+
+// types
+import { UserType } from '../../types/UserType';
+
+// utils
 import { hashPassword } from '../../utils/Passwords';
 
 export default function Signup() {

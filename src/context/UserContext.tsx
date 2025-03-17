@@ -32,6 +32,7 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
     setUser(noUser);
     // Clear localStorage on logout
     localStorage.removeItem('user');
+    localStorage.removeItem('google_token');
   };
 
   return (

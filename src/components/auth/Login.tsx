@@ -1,7 +1,13 @@
-import { useState } from 'react';
 import '../../styles/auth/login.css';
-import { useUser } from '../../context/UserContext';
+import { useState } from 'react';
+
+// api
 import loginUser from '../../api/loginUser';
+
+// context
+import { useUser } from '../../context/UserContext';
+
+// types
 import { UserType } from '../../types/UserType';
 
 export default function Login() {

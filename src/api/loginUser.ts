@@ -1,5 +1,9 @@
-import { comparePassword } from "../utils/Passwords";
+// api
 import baseURL from "./api";
+
+// util
+import { comparePassword } from "../utils/Passwords";
+
 
 export default async function loginUser(email: string, password: string) {
   // get user by email

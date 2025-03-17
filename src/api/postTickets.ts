@@ -1,6 +1,10 @@
+// api
+import baseURL from "./api";
+
+// types
 import { EventType } from "../types/EventType";
 import { TicketType } from "../types/TicketType";
-import baseURL from "./api";
+
 
 export default async function postTickets(userID: string, event: EventType, qty: number) {
     const okReponsses: boolean[] = []

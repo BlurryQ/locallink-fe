@@ -1,5 +1,7 @@
 import '../styles/events.css';
 import { useEffect, useState } from 'react';
+
+// api
 import getEvents from '../api/getEvents';
 
 // type
