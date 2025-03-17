@@ -15,6 +15,14 @@
     color: inherit;
 }
 
+.events-card .title {
+    font-size: 3rem;
+}
+
+.events-card .price {
+    font-size: 2rem;
+}
+
 .events-card img {
     opacity: 0.4;
     border-radius: 1rem;

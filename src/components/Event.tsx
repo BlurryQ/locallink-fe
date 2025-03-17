@@ -50,6 +50,9 @@ export default function Event() {
         <ul className="event">
           <li>Organiser: {event.organiser}</li>
           {/* <li>Capacity: {event.capacity}</li> */}
+          <li className="title">
+            {capitalizeFirstLetterOfEachWord(event.name)}
+          </li>
           <li>
             <img
               src={event.image_url === 'default' ? logo : event.image_url}
@@ -57,10 +60,9 @@ export default function Event() {
               className={event.image_url === 'default' ? 'placeholder' : ''}
             />
           </li>
-          <li>{capitalizeFirstLetterOfEachWord(event.name)}</li>
           <li>Start: {formatEventTime(event.start)}</li>
           <li>End: {formatEventTime(event.end)}</li>
-          <li>Ticket Price: {totalCost}</li>
+          <li>Ticket Price: £{totalCost}</li>
           <li>
             <ul className="location">
               Location:

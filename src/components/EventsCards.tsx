@@ -12,7 +12,7 @@ export default function EventsCard({ event }: { event: EventType }) {
   return (
     <a href={'/events/' + event.id}>
       <ul>
-        <li>{capitalizeFirstLetterOfEachWord(event.name)}</li>
+        <li className="title">{capitalizeFirstLetterOfEachWord(event.name)}</li>
         <li>{formatEventTime(event.start)}</li>
         {/* <li>End: {formatEventTime(event.end)}</li> */}
         <li>
@@ -24,7 +24,7 @@ export default function EventsCard({ event }: { event: EventType }) {
           <li>{event.location.street}</li>
           <li>{event.location.city}</li>
         </ul>
-        <li>{eventPrice}</li>
+        <li className="price">{eventPrice}</li>
       </ul>
     </a>
   );
