@@ -4,3 +4,27 @@
     gap: 1rem;
     padding: 1rem;
 }
+
+@media only screen and (max-width: 1440px) {
+    .tickets {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .tickets {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .tickets {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media only screen and (max-width: 630px) {
+    .tickets {
+        grid-template-columns: 1fr
+    }
+}

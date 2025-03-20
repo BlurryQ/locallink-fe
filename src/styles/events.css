@@ -4,3 +4,27 @@
     padding: 1rem;
     gap: 1rem
 }
+
+@media only screen and (max-width: 1440px) {
+    .events-list {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .events-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .events-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .events-list {
+        grid-template-columns: 1fr
+    }
+}
