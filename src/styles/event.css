@@ -31,3 +31,10 @@
     width: 5rem;
     align-self: center;
 }
+
+@media only screen and (max-width: 600px) {
+    .event img {
+        width: 300px;
+        height: auto;
+    }
+}
