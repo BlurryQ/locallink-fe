@@ -5,16 +5,16 @@ import { useParams } from 'react-router-dom';
 // apis
 import { getEventByID } from '../apis/events.api';
 
-// images
-import logo from '../assets/logo.png';
+// components
+import BuyTickets from './BuyTickets';
 
 // types
 import { EventType } from '../types/EventType';
 
 // utils
-import formatEventTime from '../utils/formatEventTime';
 import capitalizeFirstLetterOfEachWord from '../utils/capitaliseFirstLetterOfEachWord';
-import BuyTickets from './BuyTickets';
+import formatEventTime from '../utils/formatEventTime';
+import getImage from '../utils/getImage';
 
 export default function Event() {
   const { id } = useParams();
@@ -55,7 +55,7 @@ export default function Event() {
           </li>
           <li>
             <img
-              src={event.image_url === 'default' ? logo : event.image_url}
+              src={getImage(event.image_url)}
               alt="Event image"
               className={event.image_url === 'default' ? 'placeholder' : ''}
             />

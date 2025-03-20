@@ -4,22 +4,18 @@ import { useState } from 'react';
 // api
 import { redirectToGoogleAuthForCode } from '../apis/third-party/google.api';
 
-// image
-import logo from '../assets/logo.png';
-
 // types
 import { TicketType } from '../types/TicketType';
 
 // utils
-import formatEventTime from '../utils/formatEventTime';
-import capitalizeFirstLetterOfEachWord from '../utils/capitaliseFirstLetterOfEachWord';
 import addToCalendar from '../utils/addToCalendar';
+import capitalizeFirstLetterOfEachWord from '../utils/capitaliseFirstLetterOfEachWord';
+import formatEventTime from '../utils/formatEventTime';
+import getImage from '../utils/getImage';
 
 export default function TicketsCard({ ticket }: { ticket: TicketType }) {
   const [addedToCalendar, setAddedToCalendar] = useState<string>('');
   if (!ticket) return;
-  const image: string =
-    ticket.image_url === 'default' ? logo : ticket.image_url || logo;
 
   const addEventToCalendar = async (e: any) => {
     e.preventDefault();
@@ -43,7 +39,11 @@ export default function TicketsCard({ ticket }: { ticket: TicketType }) {
             : 'Start time not available'}
         </li>
         <li>
-          <img src={image} alt="Event image" className="placeholder" />
+          <img
+            src={getImage(ticket.image_url || 'default')}
+            alt="Event image"
+            className={ticket.image_url === 'default' ? 'placeholder' : ''}
+          />
         </li>
         <li>
           Finish:{' '}

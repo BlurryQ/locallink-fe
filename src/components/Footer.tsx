@@ -3,7 +3,7 @@ import logo from '../assets/logo.png';
 
 export default function Footer() {
   return (
-    <div className="footer flex-between">
+    <div className="footer flex-between closed">
       <ul>
         Developer
         <li>

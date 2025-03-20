@@ -4,6 +4,12 @@
     text-align: center;
 }
 
+.event img {
+    border-radius: 1rem;
+    border: 2px solid var(--flair);
+}
+
+.event img,
 .event .placeholder {
     height: 300px
 }
@@ -14,6 +20,7 @@
 
 .event .title {
     font-size: 3rem;
+    margin-top: 1rem;
 }
 
 .event .location {
@@ -24,4 +31,11 @@
 .add-ticket {
     width: 5rem;
     align-self: center;
+}
+
+@media only screen and (max-width: 600px) {
+    .event img {
+        width: 300px;
+        height: auto;
+    }
 }

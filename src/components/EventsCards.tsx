@@ -1,14 +1,12 @@
 import '../styles/eventsCard.css';
 
-// images
-import logo from '../assets/logo.png';
-
 // types
 import { EventType } from '../types/EventType';
 
 // utils
 import formatEventTime from '../utils/formatEventTime';
 import capitalizeFirstLetterOfEachWord from '../utils/capitaliseFirstLetterOfEachWord';
+import getImage from '../utils/getImage';
 
 export default function EventsCard({
   event,
@@ -17,7 +15,6 @@ export default function EventsCard({
   event: EventType;
   usersEvents: boolean;
 }) {
-  const image: string = event.image_url === 'default' ? logo : event.image_url;
   const eventPrice: string =
     event.price === 0 ? 'Free' : `£${(event.price / 100).toFixed(2)}`;
 
@@ -38,7 +35,11 @@ export default function EventsCard({
         <li>{formatEventTime(event.start)}</li>
         {/* <li>End: {formatEventTime(event.end)}</li> */}
         <li>
-          <img src={image} alt="Event image" className="placeholder" />
+          <img
+            src={getImage(event.image_url)}
+            alt="Event image"
+            className={event.image_url === 'default' ? 'placeholder' : ''}
+          />
         </li>
         <ul className="location">
           Location:

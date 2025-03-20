@@ -11,6 +11,13 @@
     padding: 0.2rem;
 }
 
+.ticket-card img {
+    width: 200px;
+    border-radius: 1rem;
+    border: 2px solid var(--flair);
+    height: 150px;
+}
+
 .ticket-card .location {
     padding: 1rem;
     width: 50%;

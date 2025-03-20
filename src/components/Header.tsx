@@ -13,13 +13,35 @@ export default function Header() {
   const userContext = useUser();
   if (!userContext) return;
   const { user, logout } = userContext;
+
+  const handleBurgerPress = (): void => {
+    const burgerList = document.querySelector('.hamburger-list');
+    const footer = document.querySelector('.footer');
+    if (!burgerList || !footer) return;
+    const burgerStatus: string = burgerList.classList[2];
+    if (burgerStatus === 'closed') {
+      burgerList.classList.remove('closed');
+      burgerList.classList.add('open');
+      footer.classList.remove('closed');
+      footer.classList.add('open');
+    } else {
+      burgerList.classList.remove('open');
+      burgerList.classList.add('closed');
+      footer.classList.remove('open');
+      footer.classList.add('closed');
+    }
+  };
+
   return (
     <div className="flex-between header">
       <a href="/">
         <img src={logo} className="logo" alt="Local Link logo" />
       </a>
       <Search />
-      <ul className="flex-between">
+      <button className="hamburger" onClick={handleBurgerPress}>
+        =
+      </button>
+      <ul className="flex-between hamburger-list closed">
         {user.email ? (
           <>
             <li>
@@ -46,7 +68,7 @@ export default function Header() {
             </li>
           </ul>
         )}
-        <li>Theme</li>
+        {/* <li>Theme</li> */}
       </ul>
     </div>
   );

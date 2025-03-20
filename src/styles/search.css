@@ -35,3 +35,9 @@
     color: var(--purple);
     font-weight: bold;
 }
+
+@media only screen and (max-width:600px) {
+    .search .search-bar {
+        width: unset;
+    }
+}

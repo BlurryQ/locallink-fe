@@ -10,14 +10,13 @@ import { getEventByID, patchEvent, postEvent } from '../apis/events.api';
 // context
 import { useUser } from '../context/UserContext';
 
-// images
-import logo from '../assets/logo.png';
-
 // types
 import { EventType } from '../types/EventType';
 
 // utils
 import addOneHour from '../utils/addOneHour';
+import capitalizeFirstLetterOfEachWord from '../utils/capitaliseFirstLetterOfEachWord';
+import getImage from '../utils/getImage';
 
 export default function EventForm() {
   const { eventID } = useParams();
@@ -35,8 +34,21 @@ export default function EventForm() {
   const [eventDetails, setEventDetails] = useState<string>('');
   const [eventPrice, setEventPrice] = useState<string>('0');
   const [eventCategory, setEventCategory] = useState<string>('');
-  const [eventImage, setEventImage] = useState<File | null>(null);
-  const [imageUrl, setImageUrl] = useState<string | null>(null);
+  const [eventImage, setEventImage] = useState<string>('default');
+
+  /* TODO category table if introducing it in search */
+  const eventCategories = [
+    'music & nightlife',
+    'arts & culture',
+    'food & drink',
+    'sports & fitness',
+    'community & social',
+    'education & workshops',
+    'family & kids',
+    'markets & shopping',
+    'seasonal & holidays',
+    'tech & AI',
+  ];
 
   const userContext = useUser();
   if (!userContext) return;
@@ -72,20 +84,6 @@ export default function EventForm() {
     }
   }, []);
 
-  const handleImageChange = (e: any) => {
-    const file = e.target.files?.[0]; // Get the first selected file
-    if (file) {
-      setEventImage(file);
-      const url = URL.createObjectURL(file);
-      setImageUrl(url);
-    }
-  };
-
-  const clearImageSelection = () => {
-    setEventImage(null);
-    setImageUrl(null);
-  };
-
   const createEventObject = async (): Promise<EventType> => {
     const locationCoords = await getLongAndLatFromPostcode(
       eventLocationPostcode
@@ -113,7 +111,7 @@ export default function EventForm() {
       price: Number(eventPrice),
       category: eventCategory,
       /* TODO image URL after uplaod */
-      image_url: imageUrl || 'default',
+      image_url: eventImage || 'default',
     };
   };
 
@@ -124,18 +122,10 @@ export default function EventForm() {
       return;
     }
 
-    // if (!user.id || !eventImage) return;
-    // const sendImage = await postImageWithID(user.id, eventImage);
-    // console.log('sendImage', sendImage);
-
     try {
-      if (eventID) {
-        const result = await patchEvent(eventID, event);
-        console.log(result);
-      } else {
-        const result = await postEvent(event);
-        console.log(result);
-      }
+      if (eventID) await patchEvent(eventID, event);
+      else await postEvent(event);
+      window.location.href = '/';
     } catch (err) {
       console.error(err);
     }
@@ -151,13 +141,9 @@ export default function EventForm() {
           handleSubmit();
         }}
       >
-        <img
-          src={imageUrl || logo}
-          alt="Selected"
-          style={{ maxWidth: '100%', height: 'auto' }}
-        />
+        <img src={getImage(eventImage)} alt={`${eventCategory} image`} />
 
-        <label htmlFor="image-upload">Upload Image:</label>
+        {/* <label htmlFor="image-upload">Upload Image:</label>
         <div>
           <input
             type="file"
@@ -172,7 +158,7 @@ export default function EventForm() {
           {imageUrl ? (
             <button onClick={clearImageSelection}>Clear Selection</button>
           ) : null}
-        </div>
+        </div> */}
 
         <label htmlFor="name">Event Name:</label>
         <input
@@ -281,7 +267,7 @@ export default function EventForm() {
           required
         ></textarea>
 
-        <label htmlFor="price">Price:</label>
+        <label htmlFor="price">Price (in pence):</label>
         <input
           type="number"
           id="price"
@@ -293,15 +279,27 @@ export default function EventForm() {
         />
 
         <label htmlFor="category">Category:</label>
-        <input
-          type="text"
+        <select
           id="category"
           name="category"
-          maxLength={32}
-          onChange={(e) => setEventCategory(e.target.value)}
+          onChange={(e) => {
+            const eventCat: string = e.target.value;
+            const imageType: string = eventCat.split(' ')[0];
+            setEventCategory(eventCat);
+            setEventImage(imageType);
+          }}
           value={eventCategory}
           required
-        />
+        >
+          <option value="" disabled>
+            Please select a category
+          </option>
+          {eventCategories.map((category) => (
+            <option key={category} value={category}>
+              {capitalizeFirstLetterOfEachWord(category)}
+            </option>
+          ))}
+        </select>
 
         <button type="submit" className="create-event">
           {eventID ? 'Edit Event' : 'Create Event'}
