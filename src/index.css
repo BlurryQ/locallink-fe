@@ -80,7 +80,10 @@ table {
 }
 
 .events-list,
-.event-form {
+.event-form,
+.event,
+.tickets,
+.cart {
   overflow-y: auto;
   overflow-x: hidden;
 }
