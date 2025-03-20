@@ -25,10 +25,9 @@ export default function Events() {
 
   useEffect(() => {
     async function fetchEvents() {
-      if (!user.id) return;
       try {
         setLoading(true);
-        if (usersEventsOnly) {
+        if (usersEventsOnly && user.id) {
           const data = await getEventByOrganiser(user.id);
           setEvents(data.events);
         } else {
