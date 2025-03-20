@@ -33,7 +33,7 @@ ul ul * {
     .header {
         z-index: 1;
         position: fixed;
-        background-image: linear-gradient(to top left, var(--blue), var(--purple));
+        background-image: var(--background-image);
         height: 57px;
         width: 90vw;
     }
@@ -42,11 +42,11 @@ ul ul * {
         gap: 1rem;
     }
 
-    .header .open { 
-            display: block;
+   .open { 
+            display: flex;
     }
 
-    .header .closed { 
+   .closed { 
             display: none;
     }
 

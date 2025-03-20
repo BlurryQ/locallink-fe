@@ -16,14 +16,19 @@ export default function Header() {
 
   const handleBurgerPress = (): void => {
     const burgerList = document.querySelector('.hamburger-list');
-    if (!burgerList) return;
+    const footer = document.querySelector('.footer');
+    if (!burgerList || !footer) return;
     const burgerStatus: string = burgerList.classList[2];
     if (burgerStatus === 'closed') {
       burgerList.classList.remove('closed');
       burgerList.classList.add('open');
+      footer.classList.remove('closed');
+      footer.classList.add('open');
     } else {
       burgerList.classList.remove('open');
       burgerList.classList.add('closed');
+      footer.classList.remove('open');
+      footer.classList.add('closed');
     }
   };
 
