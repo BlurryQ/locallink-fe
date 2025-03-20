@@ -1,11 +1,14 @@
 // api
-import baseURL from "./api";
+import baseURL from "./baseURL";
+
+// types
+import { UserType } from "../types/UserType";
 
 // util
 import { comparePassword } from "../utils/Passwords";
 
 
-export default async function loginUser(email: string, password: string) {
+export async function loginUser(email: string, password: string) {
   // get user by email
   try {
     const res = await baseURL.get(`/users?email=` + email)
@@ -20,4 +23,9 @@ export default async function loginUser(email: string, password: string) {
       return {error: "email address not found"}
     return {error}
   }
+}
+
+export async function postUser(user: UserType) {
+  const response = await baseURL.post(`/users`, user)
+  return response;
 }
