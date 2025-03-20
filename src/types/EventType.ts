@@ -1,9 +1,9 @@
 import { LocationType } from "./LocationType"
 
 export type EventType = {
-    id: string,
+    id?: string,
     name: string,
-    created_at: Date,
+    created_at?: Date,
     start: Date,
     end: Date,
     location: LocationType

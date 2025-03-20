@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // api
-import postTickets from '../api/postTickets';
+import { postTickets } from '../apis/tickets.api';
 
 // context
 import { useUser } from '../context/UserContext';
@@ -27,14 +27,14 @@ export default function BuyTickets({
   const price = event.price;
 
   const handleGetTickets = async () => {
+    // if invalid tickets or no user
     if (ticketQty < 1) return setError('Invalid amount of tickets selected');
     if (!user.id) return setError('Please log in to get tickets');
+
     event.ticket_qty = ticketQty;
-    const state: any = { state: { event } };
-    // navigate('/cart', state);
+    const state: { state: { event: EventType } } = { state: { event } };
     if (redirect === '/tickets') {
       const results: boolean[] = await postTickets(user.id, event, ticketQty);
-      console.log('results', results);
       if (results.includes(false)) {
         const failedTickets = results.filter(
           (result) => result === false
@@ -64,7 +64,7 @@ export default function BuyTickets({
         <input
           type="number"
           value={ticketQty}
-          min="1"
+          min={1}
           onChange={updateTicketQty}
         />
       </label>

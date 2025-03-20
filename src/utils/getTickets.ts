@@ -1,5 +1,5 @@
 // api
-import getTicketDetails from "../api/getTicketDetails";
+import { getTicketDetails } from "../apis/tickets.api";
 
 // types
 import { TicketType } from "../types/TicketType";

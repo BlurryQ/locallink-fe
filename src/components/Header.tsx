@@ -23,6 +23,12 @@ export default function Header() {
         {user.email ? (
           <>
             <li>
+              <a href="/events/mine">My Events</a>
+            </li>{' '}
+            <li>
+              <a href="/events/new">New Event</a>
+            </li>
+            <li>
               <a href="/tickets">Tickets</a>
             </li>
             <ul>

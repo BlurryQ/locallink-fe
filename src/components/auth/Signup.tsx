@@ -2,7 +2,7 @@ import '../../styles/auth/signup.css';
 import { useState } from 'react';
 
 // api
-import postUser from '../../api/postUser';
+import { postUser } from '../../apis/users.api';
 
 // package
 import PasswordChecklist from 'react-password-checklist';

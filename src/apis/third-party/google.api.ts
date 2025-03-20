@@ -1,8 +1,8 @@
 // api
-import baseURL from "./api";
+import baseURL from "../baseURL";
 
 // type
-import { GoogleTokenType } from "../types/GoogleTokenType";
+import { GoogleTokenType } from "../../types/GoogleTokenType";
 
 
 export const redirectToGoogleAuthForCode = async () => {
@@ -21,6 +21,10 @@ export const exchangeCodeForToken = async (code: string) => {
 }
   
 export const sendToCalendar = async (token: GoogleTokenType, event:any) => {
-  const response = await baseURL.post('/google/event', {token, event})
-  return response
+  try {
+    const response = await baseURL.post('/google/event', {token, event})
+    return response
+  } catch (err) {
+    return err
+  }
 }

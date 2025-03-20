@@ -1,6 +1,37 @@
 .search {
-    width: 30%;
+    position: relative;
+}
+
+.search .search-bar {
+    width: 30vw;
     padding: 0.3rem;
     border-radius: 0.5rem;
     border: none;
+}
+
+.search .search-results {
+    position: absolute;
+    top: 2rem;
+    background-color: var(--blue);
+    border-radius: 0.3rem;
+    width: 100%;
+}
+
+.search .search-results li {
+    padding: 0.2rem;
+}
+
+.search .search-results li a {
+    color: var(--purple);
+    text-decoration: none;
+    display: block;
+    border-radius: 0.3rem;
+    width: 98%;
+    padding: 0.2rem;
+}
+
+.search .search-results li a:hover {
+    background-color: var(--aqua);
+    color: var(--purple);
+    font-weight: bold;
 }

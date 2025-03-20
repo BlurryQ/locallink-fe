@@ -23,6 +23,12 @@
     font-size: 2rem;
 }
 
+.events-card .edit {
+    border: 1px solid var(--font-color);
+    border-radius: 0.3rem;
+    box-shadow: -2px 2px 2px black;
+}
+
 .events-card img {
     opacity: 0.4;
     border-radius: 1rem;
