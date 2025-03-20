@@ -13,9 +13,76 @@
 .header a:link,
 .header a:visited {
     color: var(--link-color);
+    text-decoration: none;
 }
 
 .header .flex-between {
     gap: 1rem;
     text-align: center;
+}
+
+.hamburger {
+    display: none;
+}
+
+ul ul * {
+    padding: 0.3rem;
+}
+
+@media only screen and (max-width:600px) {
+    .header {
+        z-index: 1;
+        position: fixed;
+        background-image: linear-gradient(to top left, var(--blue), var(--purple));
+        height: 57px;
+        width: 90vw;
+    }
+    
+    .header.flex-between {
+        gap: 1rem;
+    }
+
+    .header .open { 
+            display: block;
+    }
+
+    .header .closed { 
+            display: none;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .header .hamburger-list {
+        z-index: 2;
+        position: absolute;
+        top: var(--header-height);
+        right: 0;
+        background-color: var(--blue);
+        border-radius: 0.3rem;
+        border: 2px solid var(--font-color);
+        padding: 0.5rem;
+    }
+
+    .header .hamburger-list li a {
+        color: var(--aqua);
+        text-decoration: none;
+        display: block;
+        border-radius: 0.3rem;
+        padding: 0.4rem;
+    }
+
+    .header .hamburger-list li a:hover {
+        background-color: var(--purple);
+        font-weight: bold;
+    }
+
+
+    .events-list,
+    .event-form,
+    .tickets,
+    .event {
+        margin-top: calc(var(--header-height) + 1rem);
+    }
 }
