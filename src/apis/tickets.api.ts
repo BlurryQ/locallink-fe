@@ -5,8 +5,8 @@ import baseURL from "./baseURL";
 import { EventType } from "../types/EventType";
 import { TicketType } from "../types/TicketType";
 
-export async function getTicketDetails(ticketID: string) {
-  const response = await baseURL.get(`tickets/events/` + ticketID)
+export async function getTicketDetails(userID: string) {
+  const response = await baseURL.get(`tickets/events/` + userID)
   return response.data;
 }
 

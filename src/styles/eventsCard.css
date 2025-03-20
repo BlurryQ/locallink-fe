@@ -17,6 +17,7 @@
 
 .events-card .title {
     font-size: 3rem;
+    height: 130px;
 }
 
 .events-card .price {
