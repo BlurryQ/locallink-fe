@@ -4,6 +4,12 @@
     text-align: center;
 }
 
+.event img {
+    border-radius: 1rem;
+    border: 2px solid var(--flair);
+}
+
+.event img,
 .event .placeholder {
     height: 300px
 }
