@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 // apis
-import getEventByID from '../api/getEventByID';
+import { getEventByID } from '../apis/events.api';
 
 // images
 import logo from '../assets/logo.png';
@@ -48,7 +48,7 @@ export default function Event() {
       {loading ? 'loading' : null}
       {!loading && event ? (
         <ul className="event">
-          <li>Organiser: {event.organiser}</li>
+          {/* <li>Organiser: {event.organiser}</li> */}
           {/* <li>Capacity: {event.capacity}</li> */}
           <li className="title">
             {capitalizeFirstLetterOfEachWord(event.name)}

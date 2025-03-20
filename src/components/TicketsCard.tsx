@@ -2,7 +2,7 @@ import '../styles/ticketCard.css';
 import { useState } from 'react';
 
 // api
-import { redirectToGoogleAuthForCode } from '../api/googleAPI';
+import { redirectToGoogleAuthForCode } from '../apis/third-party/google.api';
 
 // image
 import logo from '../assets/logo.png';
@@ -26,7 +26,7 @@ export default function TicketsCard({ ticket }: { ticket: TicketType }) {
     const googleToken: string | null = localStorage.getItem('google_token');
     if (!googleToken) await redirectToGoogleAuthForCode();
     else {
-      const res = await addToCalendar(googleToken, ticket);
+      const res: any = await addToCalendar(googleToken, ticket);
       setAddedToCalendar(res.status === 200 ? 'success' : 'failure');
     }
   };

@@ -2,7 +2,7 @@ import '../../styles/auth/login.css';
 import { useState } from 'react';
 
 // api
-import loginUser from '../../api/loginUser';
+import { loginUser } from '../../apis/users.api';
 
 // context
 import { useUser } from '../../context/UserContext';

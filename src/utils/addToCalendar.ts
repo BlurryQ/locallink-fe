@@ -1,5 +1,5 @@
 // api
-import { sendToCalendar } from "../api/googleAPI";
+import { sendToCalendar } from "../apis/third-party/google.api";
 
 // types
 import { GoogleTokenType } from "../types/GoogleTokenType";
