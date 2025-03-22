@@ -12,15 +12,16 @@ import tech from '../assets/images/tech.jpg';
 
 
 export default function getImage(imageType: string) {
-    if (imageType === "default") return placeholder
-    if (imageType === "arts") return arts
-    if (imageType === "community") return community
-    if (imageType === "education") return education
-    if (imageType === "family") return family
-    if (imageType === "food") return food
-    if (imageType === "markets") return markets
-    if (imageType === "music") return music
-    if (imageType === "seasonal") return seasonal
-    if (imageType === "sports") return sports
-    if (imageType === "tech") return tech
+    const image: string = imageType.split(" ")[0]
+    if (image === "default") return placeholder
+    if (image === "arts") return arts
+    if (image === "community") return community
+    if (image === "education") return education
+    if (image === "family") return family
+    if (image === "food") return food
+    if (image === "markets") return markets
+    if (image === "music") return music
+    if (image === "seasonal") return seasonal
+    if (image === "sports") return sports
+    if (image === "tech") return tech
 }

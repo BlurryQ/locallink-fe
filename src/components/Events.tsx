@@ -20,6 +20,7 @@ export default function Events() {
   if (!userContext) return;
   const { user } = userContext;
 
+  // get URL and check if /events/mine (users events) or not
   const url: string = window.location.pathname;
   const usersEventsOnly: boolean = url.split('/')[2] === 'mine';
 

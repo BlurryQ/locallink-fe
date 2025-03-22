@@ -33,13 +33,8 @@ export default function EventsCard({
       <ul>
         <li className="title">{capitalizeFirstLetterOfEachWord(event.name)}</li>
         <li>{formatEventTime(event.start)}</li>
-        {/* <li>End: {formatEventTime(event.end)}</li> */}
         <li>
-          <img
-            src={getImage(event.image_url)}
-            alt="Event image"
-            className={event.image_url === 'default' ? 'placeholder' : ''}
-          />
+          <img src={getImage(event.category)} alt={`${event.category} image`} />
         </li>
         <ul className="location">
           Location:

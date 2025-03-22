@@ -10,6 +10,7 @@ export type TicketType = {
     end?: Date,
     location?: LocationType
     status?: string,
-    image_url?: string,
+    image?: string,
     total_tickets?: number
+    category?: string
 }

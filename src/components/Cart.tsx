@@ -20,11 +20,7 @@ export default function Cart() {
           <h3 className="title">
             {capitalizeFirstLetterOfEachWord(event.name)}
           </h3>
-          <img
-            src={getImage(event.image_url)}
-            alt="Event image"
-            className={event.image_url === 'default' ? 'placeholder' : ''}
-          />
+          <img src={getImage(event.category)} alt={`${event.category} image`} />
         </div>
         <div className="column date-location">
           <p className="date">{formatEventTime(event.start)}</p>

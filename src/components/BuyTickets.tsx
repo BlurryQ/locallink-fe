@@ -68,8 +68,10 @@ export default function BuyTickets({
           onChange={updateTicketQty}
         />
       </label>
-      <p>Total: £{((ticketQty * price) / 100).toFixed(2)}</p>
-      <button type="submit">Get ticket(s)</button>
+      <div>
+        <p>Total: £{((ticketQty * price) / 100).toFixed(2)}</p>
+        <button type="submit">Get ticket(s)</button>
+      </div>
       <p className={`error ${error ? '' : 'invisible'}`}>
         {error ? error : 'placeholder'}
       </p>

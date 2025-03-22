@@ -5,7 +5,7 @@ export default function capitalizeFirstLetterOfEachWord(input: string): string {
       .replace(/\s+/g, ' ') 
       .split(' ')
       .map((word) => {
-        return word[0].toUpperCase() + word.slice(1).toLowerCase();
+        return word[0].toUpperCase() + word.slice(1);
       })
       .join(' ');
   }
