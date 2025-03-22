@@ -21,7 +21,6 @@ function App() {
       <div className="app">
         <Header />
         <Routes>
-          {/* <Route path="/" element={<h1>HOME</h1>} /> */}
           <Route path="/cart" element={<Cart />} />
           <Route path="/" element={<Events />} />
           <Route path="/events/:id" element={<Event />} />
