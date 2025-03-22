@@ -33,11 +33,13 @@ export default function Tickets() {
 
   return (
     <div className="tickets">
-      {tickets.length > 0
-        ? tickets.map((ticket) => (
-            <TicketsCard key={ticket.ticket_id} ticket={ticket} />
-          ))
-        : null}
+      {tickets.length > 0 ? (
+        tickets.map((ticket) => (
+          <TicketsCard key={ticket.ticket_id} ticket={ticket} />
+        ))
+      ) : (
+        <h3>No tickets found</h3>
+      )}
     </div>
   );
 }
