@@ -34,7 +34,6 @@ export default function EventForm() {
   const [eventDetails, setEventDetails] = useState<string>('');
   const [eventPrice, setEventPrice] = useState<string>('0');
   const [eventCategory, setEventCategory] = useState<string>('');
-  const [eventImage, setEventImage] = useState<string>('default');
 
   /* TODO category table if introducing it in search */
   const eventCategories = [
@@ -110,8 +109,6 @@ export default function EventForm() {
       status: 'upcoming',
       price: Number(eventPrice),
       category: eventCategory,
-      /* TODO image URL after uplaod */
-      image_url: eventImage || 'default',
     };
   };
 
@@ -141,24 +138,10 @@ export default function EventForm() {
           handleSubmit();
         }}
       >
-        <img src={getImage(eventImage)} alt={`${eventCategory} image`} />
-
-        {/* <label htmlFor="image-upload">Upload Image:</label>
-        <div>
-          <input
-            type="file"
-            id="image-upload"
-            name="image-upload"
-            accept="image/*"
-            onChange={(e) => {
-              const file = e.target.files?.[0]; // Get the selected file
-              if (file) handleImageChange(e);
-            }}
-          />
-          {imageUrl ? (
-            <button onClick={clearImageSelection}>Clear Selection</button>
-          ) : null}
-        </div> */}
+        <img
+          src={getImage(eventCategory || 'default')}
+          alt={`${eventCategory} image`}
+        />
 
         <label htmlFor="name">Event Name:</label>
         <input
@@ -282,12 +265,7 @@ export default function EventForm() {
         <select
           id="category"
           name="category"
-          onChange={(e) => {
-            const eventCat: string = e.target.value;
-            const imageType: string = eventCat.split(' ')[0];
-            setEventCategory(eventCat);
-            setEventImage(imageType);
-          }}
+          onChange={(e) => setEventCategory(e.target.value)}
           value={eventCategory}
           required
         >

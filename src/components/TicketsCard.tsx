@@ -40,9 +40,8 @@ export default function TicketsCard({ ticket }: { ticket: TicketType }) {
         </li>
         <li>
           <img
-            src={getImage(ticket.image_url || 'default')}
-            alt="Event image"
-            className={ticket.image_url === 'default' ? 'placeholder' : ''}
+            src={getImage(ticket.category || 'default')}
+            alt={`${ticket.category || 'Default'} image`}
           />
         </li>
         <li>

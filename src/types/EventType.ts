@@ -13,6 +13,5 @@ export type EventType = {
     status: string,
     price: number,
     category: string,
-    image_url: string,
     ticket_qty?: number
 }
