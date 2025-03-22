@@ -24,8 +24,6 @@ export default function Event() {
   let totalCost: string =
     event && event.price > 0 ? (event.price / 100).toFixed(2) : 'Free';
 
-  // TODO create function to get image for eventCard too (run in return)
-
   useEffect(() => {
     async function fetchEvent() {
       if (!id) return;
@@ -48,16 +46,13 @@ export default function Event() {
       {loading ? 'loading' : null}
       {!loading && event ? (
         <ul className="event">
-          {/* <li>Organiser: {event.organiser}</li> */}
-          {/* <li>Capacity: {event.capacity}</li> */}
           <li className="title">
             {capitalizeFirstLetterOfEachWord(event.name)}
           </li>
           <li>
             <img
-              src={getImage(event.image_url)}
-              alt="Event image"
-              className={event.image_url === 'default' ? 'placeholder' : ''}
+              src={getImage(event.category)}
+              alt={`${event.category} image`}
             />
           </li>
           <li>Start: {formatEventTime(event.start)}</li>
@@ -74,8 +69,6 @@ export default function Event() {
             </ul>
           </li>
           <li>Details: {event.details}</li>
-          {/* <li>Status: {event.status}</li> */}
-          {/* <li>Category: {event.category}</li> */}
           <BuyTickets event={event} redirect={'/cart'} />
         </ul>
       ) : null}
