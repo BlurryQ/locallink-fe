@@ -25,12 +25,12 @@
 }
 
 .ticket-card .title {
-    font-size: 3rem;
+    font-size: 2rem;
 }
 
 .ticket-card .total-tickets {
     padding: 1rem;
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 .ticket-card .success {
