@@ -26,6 +26,11 @@
   height: 150px;
 }
 
+.lottie-loader {
+  width: 300px;
+  margin: auto;
+}
+
 .error,
 .mandatory {
   color: red;
