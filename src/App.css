@@ -47,3 +47,9 @@
 .invisible {
   visibility: hidden;
 }
+
+.none-found {
+  text-align: center;
+  font-size: 2rem;
+  grid-column: span 4;
+}
