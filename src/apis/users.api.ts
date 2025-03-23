@@ -11,7 +11,7 @@ import { comparePassword } from "../utils/Passwords";
 export async function checkUserExists(email: string) {
   // get user by email
   try {
-    const res = await baseURL.get(`/users?email=` + email)
+    await baseURL.get(`/users?email=` + email)
     return true
   } catch (error: any) {
     if (error.response.statusText === "Not Found")
