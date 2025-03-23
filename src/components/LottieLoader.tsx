@@ -5,7 +5,6 @@ import searching from '../assets/spinners/searching.json';
 import thinking from '../assets/spinners/thinking.json';
 
 export default function LottieLoader({ type }: { type: string }) {
-  console.log(type);
   let loader: any;
   if (type === 'searching') loader = searching;
   if (type === 'not found') loader = notFound;
