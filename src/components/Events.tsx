@@ -4,6 +4,9 @@ import { useEffect, useState } from 'react';
 // api
 import { getEventByOrganiser, getEvents } from '../apis/events.api';
 
+// context
+import { useUser } from '../context/UserContext';
+
 // type
 import { EventType } from '../types/EventType';
 import EventsCard from './EventsCards';
@@ -11,7 +14,6 @@ import EventsCard from './EventsCards';
 // spinner
 import Lottie from 'lottie-react';
 import searching from '../assets/spinners/searching.json';
-import { useUser } from '../context/UserContext';
 
 export default function Events() {
   const [events, setEvents] = useState<EventType[]>([]);
@@ -48,7 +50,7 @@ export default function Events() {
   return (
     <>
       {loading ? (
-        <div style={{ width: '300px', margin: 'auto' }}>
+        <div className="lottie-loader">
           <Lottie animationData={searching} loop={true} />
         </div>
       ) : null}
