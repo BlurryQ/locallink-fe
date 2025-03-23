@@ -2,7 +2,7 @@ import '../../styles/auth/signup.css';
 import { useState } from 'react';
 
 // api
-import { postUser } from '../../apis/users.api';
+import { checkUserExists, postUser } from '../../apis/users.api';
 
 // package
 import PasswordChecklist from 'react-password-checklist';
@@ -14,6 +14,7 @@ import { UserType } from '../../types/UserType';
 import { hashPassword } from '../../utils/Passwords';
 
 export default function Signup() {
+  const [error, setError] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   let [password, setPassword] = useState<string>('');
   const [passwordConfirm, setPasswordConfirm] = useState<string>('');
@@ -34,6 +35,13 @@ export default function Signup() {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     if (!passwordValid || !email) return;
+    const doesEmailExist: boolean | string = await checkUserExists(email);
+    // if email address already exists
+    if (doesEmailExist) return setError('Email address already in database');
+
+    // if database error
+    if (typeof doesEmailExist === 'string') return setError(doesEmailExist);
+
     password = await hashPassword(password);
     const newUser: UserType = {
       email,
@@ -99,6 +107,9 @@ export default function Signup() {
       <button type="submit" className="submit">
         Submit
       </button>
+      <p className={`error ${error ? '' : 'invisible'}`}>
+        {error ? error : 'placeholder'}
+      </p>
     </form>
   );
 }
