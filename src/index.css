@@ -56,8 +56,11 @@ table {
   --purple: #9227f1;
   --blue: #041444;
 
-  --flair: var(--aqua);
+  --box-shadow-color: hsla(200, 93%, 55%, 0.6);
+  --box-shadow: 2px 2px 2px var(--box-shadow-color), 5px 5px 5px var(--box-shadow-color),
+  -2px -2px 2px var(--box-shadow-color), -5px -5px 5px var(--box-shadow-color);
 
+  --flair: var(--aqua);
 
   --link-color: #23b2f7;
   --font-color: white;
