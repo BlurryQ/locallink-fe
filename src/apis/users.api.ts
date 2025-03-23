@@ -8,6 +8,18 @@ import { UserType } from "../types/UserType";
 import { comparePassword } from "../utils/Passwords";
 
 
+export async function checkUserExists(email: string) {
+  // get user by email
+  try {
+    const res = await baseURL.get(`/users?email=` + email)
+    return true
+  } catch (error: any) {
+    if (error.response.statusText === "Not Found")
+      return false
+    return "Please try again later"
+  }
+}
+
 export async function loginUser(email: string, password: string) {
   // get user by email
   try {

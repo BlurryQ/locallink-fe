@@ -87,3 +87,8 @@ table {
   overflow-y: auto;
   overflow-x: hidden;
 }
+
+button {
+  box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.4), -3px 3px 3px rgba(0, 0, 0, 0.4);
+  border-radius: 0.6rem;
+}
