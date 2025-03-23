@@ -7,13 +7,13 @@ import { getEventByOrganiser, getEvents } from '../apis/events.api';
 // context
 import { useUser } from '../context/UserContext';
 
-// type
-import { EventType } from '../types/EventType';
-import EventsCard from './EventsCards';
-
 // spinner
 import Lottie from 'lottie-react';
 import searching from '../assets/spinners/searching.json';
+
+// types
+import { EventType } from '../types/EventType';
+import EventsCard from './EventsCards';
 
 export default function Events() {
   const [events, setEvents] = useState<EventType[]>([]);
@@ -27,9 +27,9 @@ export default function Events() {
   const usersEventsOnly: boolean = url.split('/')[2] === 'mine';
 
   useEffect(() => {
+    setLoading(true);
     async function fetchEvents() {
       try {
-        setLoading(true);
         if (usersEventsOnly && user.id) {
           const data = await getEventByOrganiser(user.id);
           setEvents(data.events);
@@ -64,8 +64,7 @@ export default function Events() {
             );
           })
         ) : (
-          /* improve below */
-          <>No events found</>
+          <h3 className="none-found">No events found</h3>
         )}
       </div>
     </>
