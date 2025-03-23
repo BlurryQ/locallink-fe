@@ -14,6 +14,7 @@ import Login from './components/auth/Login';
 import Signup from './components/auth/Signup';
 import Tickets from './components/Tickets';
 import Footer from './components/Footer';
+import NotFound from './components/NotFound';
 
 function App() {
   return (
@@ -30,7 +31,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/tickets" element={<Tickets />} />
-          {/* add page not found */}
+          <Route path="/*" element={<NotFound />} />
         </Routes>
 
         <Footer />
