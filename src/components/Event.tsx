@@ -15,9 +15,11 @@ import { EventType } from '../types/EventType';
 import capitalizeFirstLetterOfEachWord from '../utils/capitaliseFirstLetterOfEachWord';
 import formatEventTime from '../utils/formatEventTime';
 import getImage from '../utils/getImage';
+import NotFound from './NotFound';
 
 export default function Event() {
   const { id } = useParams();
+  const [eventNotFound, setEventNotFound] = useState<boolean>(false);
   const [event, setEvent] = useState<EventType | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   // if event exists and is more than 0 format it, else "Free"
@@ -33,6 +35,7 @@ export default function Event() {
         setEvent(data);
       } catch (err) {
         console.error(err);
+        setEventNotFound(true);
       } finally {
         setLoading(false);
       }
@@ -43,6 +46,7 @@ export default function Event() {
 
   return (
     <>
+      {eventNotFound ? <NotFound /> : null}
       {loading ? 'loading' : null}
       {!loading && event ? (
         <ul className="event">
