@@ -60,12 +60,11 @@ export default function Event() {
           <li>Ticket Price: £{totalCost}</li>
           <li>
             <ul className="location">
-              Location:
-              <li>Name: {event.location.name}</li>
-              <li>Street: {event.location.street}</li>
-              <li>City: {event.location.city}</li>
-              <li>Country: {event.location.country}</li>
-              <li>Postcode: {event.location.postcode}</li>
+              <li>{event.location.name}</li>
+              <li>{event.location.street}</li>
+              <li>{event.location.city}</li>
+              <li>{event.location.country}</li>
+              <li>{event.location.postcode}</li>
             </ul>
           </li>
           <li>Details: {event.details}</li>
