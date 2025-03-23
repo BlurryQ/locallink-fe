@@ -27,6 +27,10 @@ export default function TicketsCard({ ticket }: { ticket: TicketType }) {
     }
   };
 
+  const addedToCalendarClass: string = addedToCalendar
+    ? addedToCalendar
+    : 'invisible';
+
   return (
     <a href={'/events/' + ticket.event_id} className="ticket-card">
       <ul>
@@ -61,8 +65,13 @@ export default function TicketsCard({ ticket }: { ticket: TicketType }) {
         <li>
           <button onClick={addEventToCalendar}>Add to Calendar</button>
         </li>
-        <li className={addedToCalendar ? addedToCalendar : 'invisible'}>
-          Added to calendar: {addedToCalendar}
+        <li className={addedToCalendarClass}>
+          Added to calendar: {addedToCalendar}{' '}
+        </li>
+        <li className={addedToCalendarClass}>
+          {addedToCalendar === 'failure'
+            ? 'If this continues try signing out and back in again'
+            : ''}
         </li>
       </ul>
     </a>
