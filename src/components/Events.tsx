@@ -4,12 +4,11 @@ import { useEffect, useState } from 'react';
 // api
 import { getEventByOrganiser, getEvents } from '../apis/events.api';
 
+// component
+import LottieLoader from './LottieLoader';
+
 // context
 import { useUser } from '../context/UserContext';
-
-// spinner
-import Lottie from 'lottie-react';
-import searching from '../assets/spinners/searching.json';
 
 // types
 import { EventType } from '../types/EventType';
@@ -49,11 +48,7 @@ export default function Events() {
 
   return (
     <>
-      {loading ? (
-        <div className="lottie-loader">
-          <Lottie animationData={searching} loop={true} />
-        </div>
-      ) : null}
+      {loading ? <LottieLoader type="searching" /> : null}
       <div className="events-list">
         {!loading && events.length > 0 ? (
           events.map((event: EventType) => {

@@ -4,12 +4,11 @@ import { useState } from 'react';
 // api
 import { loginUser } from '../../apis/users.api';
 
+// component
+import LottieLoader from '../LottieLoader';
+
 // context
 import { useUser } from '../../context/UserContext';
-
-// spinner
-import Lottie from 'lottie-react';
-import thinking from '../../assets/spinners/thinking.json';
 
 // types
 import { UserType } from '../../types/UserType';
@@ -45,11 +44,7 @@ export default function Login() {
 
   return (
     <>
-      {loading ? (
-        <div className="lottie-loader">
-          <Lottie animationData={thinking} loop={true} />
-        </div>
-      ) : null}
+      {loading ? <LottieLoader type="thinking" /> : null}
       <form className="login" onSubmit={handleSubmit}>
         <label htmlFor="email">Email Address</label>
         <input

@@ -7,6 +7,7 @@ import { getEventByID } from '../apis/events.api';
 
 // components
 import BuyTickets from './BuyTickets';
+import LottieLoader from './LottieLoader';
 
 // types
 import { EventType } from '../types/EventType';
@@ -47,7 +48,7 @@ export default function Event() {
   return (
     <>
       {eventNotFound ? <NotFound /> : null}
-      {loading ? 'loading' : null}
+      {loading ? <LottieLoader type={'searching'} /> : null}
       {!loading && event ? (
         <ul className="event">
           <li className="title">

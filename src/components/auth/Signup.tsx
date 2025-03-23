@@ -4,12 +4,11 @@ import { useState } from 'react';
 // api
 import { checkUserExists, postUser } from '../../apis/users.api';
 
+// component
+import LottieLoader from '../LottieLoader';
+
 // package
 import PasswordChecklist from 'react-password-checklist';
-
-// spinner
-import Lottie from 'lottie-react';
-import thinking from '../../assets/spinners/thinking.json';
 
 // types
 import { UserType } from '../../types/UserType';
@@ -64,17 +63,14 @@ export default function Signup() {
 
   return (
     <>
-      {loading ? (
-        <div className="lottie-loader">
-          <Lottie animationData={thinking} loop={true} />
-        </div>
-      ) : null}
+      {loading ? <LottieLoader type="thinking" /> : null}
 
       <form className="signup" onSubmit={handleSubmit}>
         <label htmlFor="email">
           Email Address <span className="mandatory">*</span>
         </label>
         <input
+          autoFocus
           name="email"
           type="email"
           id="email"

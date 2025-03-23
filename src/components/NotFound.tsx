@@ -1,11 +1,10 @@
-// spinner
-import Lottie from 'lottie-react';
-import notFound from '../assets/spinners/notFound.json';
+// component
+import LottieLoader from './LottieLoader';
 
 export default function NotFound() {
   return (
     <div className="lottie-loader">
-      <Lottie animationData={notFound} loop={true} />
+      <LottieLoader type="not found" />
       <h3 className="none-found">Page Not Found</h3>
     </div>
   );

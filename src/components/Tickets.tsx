@@ -3,14 +3,11 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 // components
+import LottieLoader from './LottieLoader';
 import TicketsCard from './TicketsCard';
 
 // context
 import { useUser } from '../context/UserContext';
-
-// spinner
-import Lottie from 'lottie-react';
-import searching from '../assets/spinners/searching.json';
 
 // types
 import { TicketType } from '../types/TicketType';
@@ -40,11 +37,7 @@ export default function Tickets() {
 
   return (
     <>
-      {loading ? (
-        <div className="lottie-loader">
-          <Lottie animationData={searching} loop={true} />
-        </div>
-      ) : null}
+      {loading ? <LottieLoader type="searching" /> : null}
       <div className="tickets">
         {tickets.length > 0 ? (
           tickets.map((ticket) => (
