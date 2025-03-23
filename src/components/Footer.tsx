@@ -19,7 +19,7 @@ export default function Footer() {
           <a href="tel:+440202 123 4567">0202 123 4567</a>
         </li>
         <li>
-          <a href="mailto:support@locallink.co.uk">support@locallink.co.uk</a>
+          <a href="mailto:locallinkuser@gmail.com">locallinkuser@gmail.com</a>
         </li>
       </ul>
       <a href="/">
