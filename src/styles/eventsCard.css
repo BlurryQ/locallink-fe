@@ -5,6 +5,10 @@
     padding: 1rem;
 }
 
+.events-card:hover {
+    box-shadow: var(--box-shadow)
+}
+
 .events-card * {
     padding: 0.2rem;
 }

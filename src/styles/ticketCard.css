@@ -7,6 +7,10 @@
     padding: 1rem;
 }
 
+.ticket-card:hover {
+    box-shadow: var(--box-shadow)
+}
+
 .ticket-card * {
     padding: 0.2rem;
 }
