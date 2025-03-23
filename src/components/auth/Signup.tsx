@@ -23,7 +23,6 @@ export default function Signup() {
   let [password, setPassword] = useState<string>('');
   const [passwordConfirm, setPasswordConfirm] = useState<string>('');
   const [passwordValid, setPasswordValid] = useState<boolean>(false);
-  // Ex@mpl3!
 
   const createUser = async (user: UserType) => {
     try {

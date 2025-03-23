@@ -21,7 +21,6 @@ export default function Login() {
   const userContext = useUser();
   if (!userContext) return;
   const { login } = userContext;
-  // Ex@mpl3!
 
   const handleSubmit = async (e: any) => {
     setLoading(true);
