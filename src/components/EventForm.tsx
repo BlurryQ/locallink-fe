@@ -4,7 +4,12 @@ import { useParams } from 'react-router-dom';
 
 // api
 import getLongAndLatFromPostcode from '../apis/third-party/postcodes.api';
-import { getEventByID, patchEvent, postEvent } from '../apis/events.api';
+import {
+  deleteEvent,
+  getEventByID,
+  patchEvent,
+  postEvent,
+} from '../apis/events.api';
 // import { postImageWithID } from '../apis/storage.api';
 
 // context
@@ -20,6 +25,9 @@ import getImage from '../utils/getImage';
 import NotFound from './NotFound';
 
 export default function EventForm() {
+  const [showDeleteEventButtons, setShowDeleteEventButtons] =
+    useState<boolean>(false);
+  const [error, setError] = useState<string>('');
   const [eventNotFound, setEventNotFound] = useState<boolean>(false);
   const { eventID } = useParams();
   const currentTime: Date = new Date();
@@ -86,48 +94,68 @@ export default function EventForm() {
     }
   }, []);
 
-  const createEventObject = async (): Promise<EventType> => {
-    const locationCoords = await getLongAndLatFromPostcode(
-      eventLocationPostcode
-    );
-    const { latitude, longitude } = locationCoords;
-    return {
-      name: eventName,
-      start: eventStart,
-      end: eventEnd,
-      location: {
-        name: eventLocationName,
-        street: eventLocationStreet,
-        city: eventLocationCity,
-        country: eventLocationCountry,
-        postcode: eventLocationPostcode,
-        coords: {
-          lat: latitude,
-          long: longitude,
+  const createEventObject = async (): Promise<EventType | undefined> => {
+    try {
+      const locationCoords = await getLongAndLatFromPostcode(
+        eventLocationPostcode
+      );
+      const { latitude, longitude } = locationCoords;
+      return {
+        name: eventName,
+        start: eventStart,
+        end: eventEnd,
+        location: {
+          name: eventLocationName,
+          street: eventLocationStreet,
+          city: eventLocationCity,
+          country: eventLocationCountry,
+          postcode: eventLocationPostcode,
+          coords: {
+            lat: latitude,
+            long: longitude,
+          },
         },
-      },
-      organiser: user.id || '',
-      capacity: eventCapacity,
-      details: eventDetails,
-      status: 'upcoming',
-      price: Number(eventPrice),
-      category: eventCategory,
-    };
+        organiser: user.id || '',
+        capacity: eventCapacity,
+        details: eventDetails,
+        status: 'upcoming',
+        price: Number(eventPrice),
+        category: eventCategory,
+      };
+    } catch (err: any) {
+      console.log('here', err);
+      setError(err.response.data.error);
+    }
   };
 
   const handleSubmit = async () => {
-    const event: EventType = await createEventObject();
-    if (!event.organiser) {
-      console.error({ error: 'no user id' });
+    const event: EventType | undefined = await createEventObject();
+    if (!event || !event.organiser) {
+      console.error({ error: 'Invalid event or user ID' });
       return;
     }
 
     try {
       if (eventID) await patchEvent(eventID, event);
       else await postEvent(event);
-      window.location.href = '/';
+      window.location.href = '/events/mine';
     } catch (err) {
       console.error(err);
+    }
+  };
+
+  const confirmDeleteEvent = () => {
+    setError('Are you sure you want to delete this event?');
+    setShowDeleteEventButtons(true);
+  };
+
+  const removeEvent = () => {
+    if (!eventID) return;
+    try {
+      deleteEvent(eventID);
+      window.location.href = '/events/mine';
+    } catch (err) {
+      setError('Failed to delete, please try again');
     }
   };
 
@@ -286,9 +314,48 @@ export default function EventForm() {
               ))}
             </select>
 
-            <button type="submit" className="create-event">
-              {eventID ? 'Edit Event' : 'Create Event'}
-            </button>
+            <p className={`error ${error ? '' : 'invisible'}`}>
+              {error ? error : 'placeholder'}
+            </p>
+
+            <div className="form-buttons">
+              {showDeleteEventButtons ? (
+                <>
+                  <button
+                    type="button"
+                    className="create-event"
+                    onClick={removeEvent}
+                  >
+                    Delete Event
+                  </button>
+                  <button
+                    type="button"
+                    className="delete-event"
+                    onClick={(e) => {
+                      setShowDeleteEventButtons(false);
+                      setError('');
+                    }}
+                  >
+                    Cancel
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button type="submit" className="create-event">
+                    {eventID ? 'Save Edit' : 'Create Event'}
+                  </button>
+                  {eventID ? (
+                    <button
+                      type="button"
+                      className="delete-event"
+                      onClick={confirmDeleteEvent}
+                    >
+                      Delete Event
+                    </button>
+                  ) : null}
+                </>
+              )}
+            </div>
           </form>
         </div>
       )}
