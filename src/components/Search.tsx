@@ -35,7 +35,9 @@ export default function Search() {
           ? matchingEvents.map((event) => {
               return (
                 <li key={event.id}>
-                  <a href={`http://localhost:5173/events/${event.id}`}>
+                  <a
+                    href={`https://locallink-fe.netlify.app/events/${event.id}`}
+                  >
                     {event.name}
                   </a>
                 </li>
