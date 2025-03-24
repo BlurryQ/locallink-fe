@@ -27,3 +27,8 @@ export async function patchEvent(id:string, event: EventType) {
   const response = await baseURL.patch(`/events/`+ id , event)
   return response;
 }
+
+export async function deleteEvent(id:string) {
+  const response = await baseURL.delete(`/events/`+ id )
+  return response;
+}
