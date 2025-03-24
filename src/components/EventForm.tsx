@@ -40,9 +40,9 @@ export default function EventForm() {
   const [eventLocationPostcode, setEventLocationPostcode] =
     useState<string>('');
   const [eventLocationCountry, setEventLocationCountry] = useState<string>('');
-  const [eventCapacity, setEventCapacity] = useState<number>(1);
-  const [eventDetails, setEventDetails] = useState<string>('');
+  const [eventCapacity, setEventCapacity] = useState<string>('0');
   const [eventPrice, setEventPrice] = useState<string>('0');
+  const [eventDetails, setEventDetails] = useState<string>('');
   const [eventCategory, setEventCategory] = useState<string>('');
 
   /* TODO category table if introducing it in search */
@@ -82,7 +82,7 @@ export default function EventForm() {
     setEventLocationCity(event.location.city);
     setEventLocationPostcode(event.location.postcode);
     setEventLocationCountry(event.location.country);
-    setEventCapacity(event.capacity);
+    setEventCapacity(String(event.capacity));
     setEventDetails(event.details);
     setEventPrice(String(event.price));
     setEventCategory(event.category);
@@ -116,7 +116,7 @@ export default function EventForm() {
           },
         },
         organiser: user.id || '',
-        capacity: eventCapacity,
+        capacity: Number(eventCapacity),
         details: eventDetails,
         status: 'upcoming',
         price: Number(eventPrice),
@@ -268,7 +268,7 @@ export default function EventForm() {
               id="capacity"
               name="capacity"
               min={1}
-              onChange={(e) => setEventCapacity(Number(e.target.value))}
+              onChange={(e) => setEventCapacity(e.target.value)}
               value={eventCapacity}
               required
             />
@@ -331,7 +331,7 @@ export default function EventForm() {
                   <button
                     type="button"
                     className="delete-event"
-                    onClick={(e) => {
+                    onClick={() => {
                       setShowDeleteEventButtons(false);
                       setError('');
                     }}
