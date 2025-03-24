@@ -13,10 +13,8 @@ export async function checkUserExists(email: string) {
   try {
     await baseURL.get(`/users?email=` + email)
     return true
-  } catch (error: any) {
-    if (error.response.statusText === "Not Found")
-      return false
-    return "Please try again later"
+  } catch (err: any) {
+    return false
   }
 }
 

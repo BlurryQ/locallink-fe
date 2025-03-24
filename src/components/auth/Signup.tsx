@@ -38,7 +38,7 @@ export default function Signup() {
     setLoading(true);
     e.preventDefault();
     if (!passwordValid || !email) return setLoading(false);
-    const doesEmailExist: boolean | string = await checkUserExists(email);
+    const doesEmailExist: boolean = await checkUserExists(email);
     // if email address already exists
     if (doesEmailExist) {
       setLoading(false);
