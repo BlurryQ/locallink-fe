@@ -34,6 +34,7 @@ export default function Header() {
 
   let username: string = '';
   if (user.email) username = user.email.split('@')[0];
+  if (username.length > 10) username = username.slice(0, 10);
 
   return (
     <div className="flex-between header">
