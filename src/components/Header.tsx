@@ -32,6 +32,9 @@ export default function Header() {
     }
   };
 
+  let username: string = '';
+  if (user.email) username = user.email.split('@')[0];
+
   return (
     <div className="flex-between header">
       <a href="/">
@@ -54,7 +57,7 @@ export default function Header() {
               <a href="/tickets">Tickets</a>
             </li>
             <ul>
-              <li>{user.email}</li>
+              <li>{username}</li>
               <button onClick={logout}>Log Out</button>
             </ul>
           </>
@@ -68,7 +71,6 @@ export default function Header() {
             </li>
           </ul>
         )}
-        {/* <li>Theme</li> */}
       </ul>
     </div>
   );

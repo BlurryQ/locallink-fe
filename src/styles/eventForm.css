@@ -38,11 +38,41 @@
     border-radius: 0.3rem;
 }
 
-.event-form .create-event {
+.event-form .form-buttons {
+    display: flex;
+    gap: 1rem;
+    margin: auto;
+    grid-column: span 2;
+}
+
+.event-form .create-event,
+.event-form .delete-event  {
     width: fit-content;
     background-color: green;
     border-radius: 0.4rem;
     color: var(--font-color);
     padding: 0.5rem;
     font-weight: bold
+}
+
+.event-form .delete-event {
+    background-color: red;
+}
+
+.event-form .error {
+    width: 300px;
+    text-align: center;
+    margin: auto;
+    grid-column: span 2;
+}
+
+@media only screen and (max-width: 400px) {
+    .event-form  form {
+        margin: 2rem 2vw;
+    } 
+
+    .event-form img {
+        max-width: 300px;
+        max-height: 300px;
+    }
 }
